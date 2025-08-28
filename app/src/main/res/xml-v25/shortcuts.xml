@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+	<shortcut
+		android:shortcutId="on"
+		android:enabled="true"
+		android:icon="@mipmap/on"
+		android:shortcutShortLabel="@string/on"
+		android:shortcutLongLabel="@string/on">
+		<intent
+			android:action="android.intent.action.VIEW"
+			android:targetPackage="io.github.ulysseszh.displaytoggle"
+			android:targetClass="io.github.ulysseszh.displaytoggle.MainActivity">
+		</intent>
+	</shortcut>
+	<shortcut
+		android:shortcutId="off"
+		android:enabled="true"
+		android:icon="@mipmap/off"
+		android:shortcutShortLabel="@string/off"
+		android:shortcutLongLabel="@string/off">
+		<intent
+			android:action="android.intent.action.VIEW"
+			android:targetPackage="io.github.ulysseszh.displaytoggle"
+			android:targetClass="io.github.ulysseszh.displaytoggle.MainActivity">
+		</intent>
+	</shortcut>
+</shortcuts>

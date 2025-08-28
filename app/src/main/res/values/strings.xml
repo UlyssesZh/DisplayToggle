@@ -1,0 +1,20 @@
+<resources>
+	<string name="app_name">Display Toggle</string>
+	<string name="homepage_url" translatable="false">https://github.com/UlyssesZh/DisplayToggle</string>
+	<string name="license" translatable="false">MIT</string>
+
+	<string name="about">About</string>
+	<string name="about_contents">%{app_name}\nVersion: %{version_name}\nHomepage: %{home_url}\nLicense: %{license}</string>
+	<string name="open_homepage">Open homepage</string>
+
+	<!-- UI -->
+	<string name="on">On</string>
+	<string name="off">Off</string>
+
+	<!-- Toast messages -->
+	<string name="shizuku_binder_not_received">Shizuku binder is not received yet</string>
+	<string name="shizuku_permission_denied">Shizuku permission is denied</string>
+	<string name="shizuku_request_permission">Requesting Shizuku permission</string>
+	<string name="shizuku_version_too_low">Shizuku version is too low</string>
+	<string name="user_service_unavailable">User service to connect Shizuku is not connected or dead</string>
+</resources>
