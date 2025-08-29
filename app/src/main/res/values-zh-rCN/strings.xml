@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">显示切换</string>
+
+	<string name="about">关于</string>
+	<string name="about_contents">%{app_name}\n版本: %{version_name}\n主页: %{homepage_url}\n开源许可: %{license}</string>
+	<string name="open_homepage">打开主页</string>
+
+	<!-- UI -->
+	<string name="on">开</string>
+	<string name="off">关</string>
+
+	<!-- Toast messages -->
+	<string name="shizuku_binder_not_received">还未接收到 Shizuku binder</string>
+	<string name="shizuku_permission_denied">Shizuku 权限被拒绝</string>
+	<string name="shizuku_request_permission">请求 Shizuku 权限</string>
+	<string name="shizuku_version_too_low">Shizuku 版本过低</string>
+	<string name="user_service_unavailable">用于连接 Shizuku 的用户服务未连接或已结束</string>
+
+	<!-- Quick settings tiles -->
+	<string name="tile_on">开启显示</string>
+	<string name="tile_off">关闭显示</string>
+</resources>

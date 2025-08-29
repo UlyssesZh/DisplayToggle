@@ -4,7 +4,7 @@
 	<string name="license" translatable="false">MIT</string>
 
 	<string name="about">About</string>
-	<string name="about_contents">%{app_name}\nVersion: %{version_name}\nHomepage: %{homepage_url}\nLicense: %{license}</string>
+	<string name="about_contents">%{app_name}\nVersion: %{version_name}\nHomepage: %{homepage_url}\nOpen-source license: %{license}</string>
 	<string name="open_homepage">Open homepage</string>
 
 	<!-- UI -->

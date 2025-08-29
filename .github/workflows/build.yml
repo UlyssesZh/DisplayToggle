@@ -1,0 +1,70 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+    tags: [v*.*]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: temurin
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 12266719 # 16.0
+
+      - name: Build
+        run: ./gradlew --no-daemon build
+
+      - name: Sign
+        run: |
+          build_tools="$(find "$ANDROID_HOME/build-tools" -maxdepth 1 -mindepth 1 -printf '%p\n' | sort -V | tail -n1)"
+          echo "${{ secrets.SIGNING_KEY_BASE64 }}" | base64 -d > signingKey.jks
+          "$build_tools/apksigner" sign \
+            --alignment-preserved \
+            --ks signingKey.jks \
+            --ks-key-alias "${{ secrets.ALIAS }}" \
+            --ks-pass "pass:${{ secrets.KEY_STORE_PASSWORD }}" \
+            --key-pass "pass:${{ secrets.KEY_PASSWORD }}" \
+            --out app-release.apk \
+            app/build/outputs/apk/release/app-release-unsigned.apk
+          rm signingKey.jks
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: app-release.apk
+
+  push:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download
+        uses: actions/download-artifact@v4
+        with:
+          name: apk
+      - name: Push
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: apk
+          build_dir: .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: app-release.apk

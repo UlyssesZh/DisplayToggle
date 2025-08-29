@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Starlight Glimmer color palette! -->
+	<color name="ic_foreground">#8640B4</color>
+	<color name="ic_background">#F2C7F8</color>
+</resources>

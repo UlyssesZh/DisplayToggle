@@ -1,0 +1,1 @@
+Toggle the physical display on and off without locking the screen

@@ -77,16 +77,28 @@ class ShizukuHelper(val context: Context? = null) {
 	}
 
 	private fun startUserService() {
+		if (!binderReceived) {
+			return
+		}
 		if (Shizuku.getVersion() < 10) {
 			Log.e(TAG, "Shizuku version ${Shizuku.getVersion()} < 10 is too low for UserService")
 			toast(R.string.shizuku_version_too_low)
+			return
+		}
+		if (userServiceConnected()) {
 			return
 		}
 		Shizuku.bindUserService(userServiceArgs, userServiceConnection)
 	}
 
 	private fun stopUserService() {
+		if (!binderReceived) {
+			return
+		}
 		if (Shizuku.getVersion() < 10) {
+			return
+		}
+		if (!userServiceConnected()) {
 			return
 		}
 		Shizuku.unbindUserService(userServiceArgs, userServiceConnection, true)
@@ -131,7 +143,7 @@ class ShizukuHelper(val context: Context? = null) {
 	}
 
 	fun setDisplayPowerMode(mode: Int) {
-		if (userService == null || !userService!!.asBinder().pingBinder()) {
+		if (!userServiceConnected()) {
 			Log.e(TAG, "UserService is null or dead")
 			toast(R.string.user_service_unavailable)
 			return
@@ -141,5 +153,9 @@ class ShizukuHelper(val context: Context? = null) {
 
 	fun setDisplayPowerMode(mode: Display.PowerMode) {
 		setDisplayPowerMode(mode.value)
+	}
+
+	private fun userServiceConnected(): Boolean {
+		return userService != null && userService!!.asBinder().pingBinder()
 	}
 }
