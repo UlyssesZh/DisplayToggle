@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
-	<cloud-backup>
-		<include domain="*"/>
-	</cloud-backup>
-	<device-transfer>
-		<include domain="*"/>
-	</device-transfer>
 </data-extraction-rules>
