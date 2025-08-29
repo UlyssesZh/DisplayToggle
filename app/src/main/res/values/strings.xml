@@ -4,7 +4,7 @@
 	<string name="license" translatable="false">MIT</string>
 
 	<string name="about">About</string>
-	<string name="about_contents">%{app_name}\nVersion: %{version_name}\nHomepage: %{home_url}\nLicense: %{license}</string>
+	<string name="about_contents">%{app_name}\nVersion: %{version_name}\nHomepage: %{homepage_url}\nLicense: %{license}</string>
 	<string name="open_homepage">Open homepage</string>
 
 	<!-- UI -->
@@ -17,4 +17,8 @@
 	<string name="shizuku_request_permission">Requesting Shizuku permission</string>
 	<string name="shizuku_version_too_low">Shizuku version is too low</string>
 	<string name="user_service_unavailable">User service to connect Shizuku is not connected or dead</string>
+
+	<!-- Quick settings tiles -->
+	<string name="tile_on">Display on</string>
+	<string name="tile_off">Display off</string>
 </resources>

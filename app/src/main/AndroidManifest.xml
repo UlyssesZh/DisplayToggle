@@ -12,24 +12,65 @@
 		android:supportsRtl="true"
 		android:theme="@style/Theme.Material3.DynamicColors.DayNight"
 		tools:targetApi="31">
+		<service
+			android:name=".service.SetDisplayPowerModeService"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="io.github.ulysseszh.displaytoggle.action.SET_DISPLAY_POWER_MODE" />
+			</intent-filter>
+		</service>
+
 		<activity
-			android:name=".MainActivity"
-			android:theme="@style/Theme.Material3.DynamicColors.DayNight.NoActionBar"
+			android:name=".activity.SetDisplayPowerModeActivity"
+			android:theme="@style/Theme.TransparentNoDisplay"
 			android:exported="true">
+			<intent-filter>
+				<action android:name="io.github.ulysseszh.displaytoggle.action.SET_DISPLAY_POWER_MODE" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".activity.MainActivity"
+			android:exported="true"
+			android:theme="@style/Theme.Material3.DynamicColors.DayNight.NoActionBar">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-			<meta-data android:name="android.app.shortcuts"
+
+			<meta-data
+				android:name="android.app.shortcuts"
 				android:resource="@xml/shortcuts" />
 		</activity>
+
+		<service
+			android:name=".service.TileSetDisplayPowerModeNormalService"
+			android:exported="true"
+			android:label="@string/tile_on"
+			android:icon="@drawable/rounded_backlight_high_24"
+			android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+			<intent-filter>
+				<action android:name="android.service.quicksettings.action.QS_TILE" />
+			</intent-filter>
+		</service>
+
+		<service
+			android:name=".service.TileSetDisplayPowerModeOffService"
+			android:exported="true"
+			android:label="@string/tile_off"
+			android:icon="@drawable/rounded_backlight_high_off_24"
+			android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+			<intent-filter>
+				<action android:name="android.service.quicksettings.action.QS_TILE" />
+			</intent-filter>
+		</service>
 
 		<provider
 			android:name="rikka.shizuku.ShizukuProvider"
 			android:authorities="${applicationId}.shizuku"
-			android:multiprocess="false"
 			android:enabled="true"
 			android:exported="true"
+			android:multiprocess="false"
 			android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 	</application>
 

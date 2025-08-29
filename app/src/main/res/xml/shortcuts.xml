@@ -4,7 +4,7 @@
 		android:enabled="true">
 		<intent
 			android:targetPackage="io.github.ulysseszh.displaytoggle"
-			android:targetClass="io.github.ulysseszh.displaytoggle.MainActivity">
+			android:targetClass="io.github.ulysseszh.displaytoggle.activity.MainActivity">
 			<parameter
 				android:name="mode"
 				android:value="on" />
@@ -14,7 +14,7 @@
 		android:enabled="true">
 		<intent
 			android:targetPackage="io.github.ulysseszh.displaytoggle"
-			android:targetClass="io.github.ulysseszh.displaytoggle.MainActivity">
+			android:targetClass="io.github.ulysseszh.displaytoggle.activity.MainActivity">
 			<parameter
 				android:name="mode"
 				android:value="off" />

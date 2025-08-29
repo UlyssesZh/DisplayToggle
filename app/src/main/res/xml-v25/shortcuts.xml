@@ -3,25 +3,31 @@
 	<shortcut
 		android:shortcutId="on"
 		android:enabled="true"
-		android:icon="@mipmap/on"
+		android:icon="@mipmap/ic_shortcut_on"
 		android:shortcutShortLabel="@string/on"
 		android:shortcutLongLabel="@string/on">
 		<intent
-			android:action="android.intent.action.VIEW"
+			android:action="io.github.ulysseszh.displaytoggle.action.SET_DISPLAY_POWER_MODE"
 			android:targetPackage="io.github.ulysseszh.displaytoggle"
-			android:targetClass="io.github.ulysseszh.displaytoggle.MainActivity">
+			android:targetClass="io.github.ulysseszh.displaytoggle.activity.SetDisplayPowerModeActivity">
+			<extra
+				android:name="POWER_MODE"
+				android:value="normal" />
 		</intent>
 	</shortcut>
 	<shortcut
 		android:shortcutId="off"
 		android:enabled="true"
-		android:icon="@mipmap/off"
+		android:icon="@mipmap/ic_shortcut_off"
 		android:shortcutShortLabel="@string/off"
 		android:shortcutLongLabel="@string/off">
 		<intent
-			android:action="android.intent.action.VIEW"
+			android:action="io.github.ulysseszh.displaytoggle.action.SET_DISPLAY_POWER_MODE"
 			android:targetPackage="io.github.ulysseszh.displaytoggle"
-			android:targetClass="io.github.ulysseszh.displaytoggle.MainActivity">
+			android:targetClass="io.github.ulysseszh.displaytoggle.activity.SetDisplayPowerModeActivity">
+			<extra
+				android:name="POWER_MODE"
+				android:value="off" />
 		</intent>
 	</shortcut>
 </shortcuts>

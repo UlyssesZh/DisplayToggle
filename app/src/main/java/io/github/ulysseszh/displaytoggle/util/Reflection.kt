@@ -7,7 +7,7 @@ import org.lsposed.hiddenapibypass.HiddenApiBypass
 import java.lang.reflect.Method
 
 object Reflection {
-	private const val TAG = "Reflection"
+	private val TAG = Reflection::class.simpleName!!
 
 	private val getDeclaredMethodMethod = Class::class.java.getDeclaredMethod(
 		"getDeclaredMethod",

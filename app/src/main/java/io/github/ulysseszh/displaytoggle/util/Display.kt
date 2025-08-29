@@ -7,7 +7,22 @@ import androidx.annotation.RequiresApi
 import kotlin.collections.forEach
 
 object Display {
-	private const val TAG = "Display"
+	private val TAG = Display::class.simpleName!!
+
+	// https://android.googlesource.com/platform/frameworks/base.git/+/master/core/java/android/view/SurfaceControl.java
+	enum class PowerMode(val value: Int) {
+		OFF(0),
+		DOZE(1),
+		NORMAL(2),
+		DOZE_SUSPEND(3),
+		ON_SUSPEND(4);
+
+		companion object {
+			fun fromString(mode: String?): PowerMode? {
+				return entries.firstOrNull { it.name.equals(mode, ignoreCase = true) }
+			}
+		}
+	}
 
 	fun getBuiltInDisplay(): IBinder {
 		return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -32,25 +47,25 @@ object Display {
 		return displayIds.map { getPhysicalDisplayTokenMethod.invoke(null, it) as IBinder }
 	}
 
-	fun setDisplayPowerMode(displayToken: IBinder, mode: Int) {
+	fun setPowerMode(displayToken: IBinder, mode: Int) {
 		Reflection.getDeclaredMethod("android.view.SurfaceControl", "setDisplayPowerMode", IBinder::class.java, Int::class.javaPrimitiveType!!)
 			.invoke(null, displayToken, mode)
+	}
+
+	fun setPowerMode(displayToken: IBinder, mode: PowerMode) {
+		setPowerMode(displayToken, mode.value)
 	}
 
 	fun setPowerMode(mode: Int) {
 		Log.i(TAG, "Setting display mode to $mode")
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-			getPhysicalDisplays().forEach { setDisplayPowerMode(it, mode) }
+			getPhysicalDisplays().forEach { setPowerMode(it, mode) }
 		} else {
-			setDisplayPowerMode(getBuiltInDisplay(), mode)
+			setPowerMode(getBuiltInDisplay(), mode)
 		}
 	}
 
-	fun turnOn() {
-		setPowerMode(2)
-	}
-
-	fun turnOff() {
-		setPowerMode(0)
+	fun setPowerMode(mode: PowerMode) {
+		setPowerMode(mode.value)
 	}
 }

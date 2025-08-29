@@ -3,13 +3,13 @@ package io.github.ulysseszh.displaytoggle.service
 import android.content.Context
 import android.util.Log
 import androidx.annotation.Keep
-import io.github.ulysseszh.displaytoggle.IUserService
+import io.github.ulysseszh.displaytoggle.IShizukuUserService
 import io.github.ulysseszh.displaytoggle.util.Display
+import kotlin.system.exitProcess
 
-
-class UserService : IUserService.Stub {
+class ShizukuUserService : IShizukuUserService.Stub {
 	companion object {
-		private const val TAG = "UserService"
+		private val TAG = ShizukuUserService::class.simpleName!!
 	}
 
 	constructor() {
@@ -19,20 +19,15 @@ class UserService : IUserService.Stub {
 	// Only available from Shizuku v13
 	@Keep // prevent proguard from removing it
 	constructor(context: Context) {
-		Log.i("UserService", "constructor with Context: context=" + context.toString())
+		Log.i("UserService", "constructor with Context: context=$context")
 	}
 
 	override fun destroy() {
 		Log.i(TAG, "UserService destroyed")
-		System.exit(0)
+		exitProcess(0)
 	}
 
-	override fun setDisplayOn() {
-		Display.turnOn()
+	override fun setDisplayPowerMode(mode: Int) {
+		Display.setPowerMode(mode)
 	}
-
-	override fun setDisplayOff() {
-		Display.turnOff()
-	}
-
 }
