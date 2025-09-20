@@ -7,6 +7,18 @@ without locking the screen or stopping foreground running apps.
 
 There are app shortcuts and Quick Settings tiles to use to toggle the display, too.
 
+## Installation
+
+<a href="https://f-droid.org/packages/io.github.ulysseszh.displaytoggle">
+	<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">
+</a>
+<a href="https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/UlyssesZh/DisplayToggle">
+	<img src="https://github.com/user-attachments/assets/713d71c5-3dec-4ec4-a3f2-8d28d025a9c6" alt="Get it on Obtainium" height="80">
+</a>
+<a href="https://github.com/UlyssesZh/DisplayToggle/releases/latest">
+	<img src="https://i.ibb.co/q0mdc4Z/get-it-on-github.png" alt="Get it on GitHub" height="80">
+</a>
+
 ## Screenshots
 
 <img src="https://raw.githubusercontent.com/UlyssesZh/DisplayToggle/master/metadata/en-US/images/phoneScreenshots/main.png?raw=true" width="270" alt="main">

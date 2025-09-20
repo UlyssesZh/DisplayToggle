@@ -3,7 +3,7 @@
 	<string name="app_name">显示切换</string>
 
 	<string name="about">关于</string>
-	<string name="about_contents">%{app_name}\n版本: %{version_name}\n主页: %{homepage_url}\n开源许可: %{license}</string>
+	<string name="about_contents">%{app_name}\n版本: %{version_name}\n主页: <a href="%{homepage_url}">%{homepage_url}</a>\n开源许可: %{license}</string>
 	<string name="open_homepage">打开主页</string>
 
 	<!-- UI -->
